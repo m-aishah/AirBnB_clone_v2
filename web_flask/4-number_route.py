@@ -7,6 +7,7 @@ Route(s):
     /hbnb: Displays "HBNB"
     /c/<text>: display “C ” followed by the value of the text variable
     /python/<text>: display “Python ”, followed by the <text> variable
+    /number/<n>: display “n is a number” only if n is an integer
 '''
 from flask import Flask
 
@@ -39,6 +40,12 @@ def python(text="is cool"):
     '''Displays "Python <text>"'''
     text = text.replace('_', ' ')
     return "Python {}".format(text)
+
+
+@app.route("/number/<int:n>", strict_slashes=False)
+def number(n):
+    '''Displays "<n> is a number" only if n is an integer.'''
+    return "{} is a number".format(n)
 
 
 if __name__ == "__main__":
